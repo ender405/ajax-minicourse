@@ -29,7 +29,7 @@ function loadData() {
     
     $body.append('<img class="bgimg" src=' + svRequestFragment + geoRequest + '>');
 
-    var nytKey = "&api-key=5a873fa1f7b482afecdc0bbdba12f7b2:3:31408746";
+    var nytKey = "&api-key=REDACTED";
     var nytAPIFragment = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q="
 
     var nytURL = nytAPIFragment + city + nytKey;
