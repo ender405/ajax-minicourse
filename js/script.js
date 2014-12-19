@@ -36,9 +36,14 @@ function loadData() {
     $.getJSON(nytURL, function (data) {
 
         console.log(data);
-        
+        $nytHeaderElem.text("NY Times Articles about " + $("#city").val() + ":");
+        $nytElem.text("");
         for (story in data.docs) {
-            return;
+            var NYTlink = data.docs[story].web_url;
+            var NYTtitle = data.docs[story].headline.main;
+            var NYTblurb = data.docs[story].lead_paragraph;
+
+            //$nytElem.append
 
 
         }
