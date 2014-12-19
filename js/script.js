@@ -50,6 +50,10 @@ function loadData() {
 
         };
 
+    }).error( function() {
+
+        $nytHeaderElem.text("NY Times Articles about " + $("#city").val() + " could not be displayed");
+        $nytElem.text("");
     });
 
 
