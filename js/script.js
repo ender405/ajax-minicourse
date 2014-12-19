@@ -21,9 +21,11 @@ function loadData() {
 //    console.log(city);
     var geoRequest = address + "," + city;
 //    console.log(geoRequest);
-    var svRequestFragment = "https://maps.googleapis.com/maps/api/streetview?size=670x670&location="
-
-    $body.append('<img class="bgimg" src=' + svRequestFragment + geoRequest + '>')
+    var svRequestFragment = "https://maps.googleapis.com/maps/api/streetview?size=600x400&location=";
+    
+    $greeting.text("So, you want to live at " + $("#street").val() + " in " + $("#city").val());
+    
+    $body.append('<img class="bgimg" src=' + svRequestFragment + geoRequest + '>');
 
     return false;
 };
