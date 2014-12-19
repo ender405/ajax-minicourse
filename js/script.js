@@ -67,7 +67,7 @@ function loadData() {
         success: function(data){
             var results = data.query.pages;
             $.each(results, function (key, value) {
-                $wikiElem.append("<li><a href=" + dispWikiURL + value.title.replace(/ /g,"_") + ">" + value.title + "</a></li>" + "");
+                $wikiElem.append("<li><a href=" + dispWikiURL + value.title.replace(/ /g,"_") + ">" + value.title   + "</a></li>" + "");
             });
         }
     });
