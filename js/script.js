@@ -1,5 +1,5 @@
 
-// nyt key: 5a873fa1f7b482afecdc0bbdba12f7b2:3:31408746
+// nyt key: 
 
 
 function loadData() {
@@ -38,15 +38,17 @@ function loadData() {
         console.log(data);
         $nytHeaderElem.text("NY Times Articles about " + $("#city").val() + ":");
         $nytElem.text("");
-        for (story in data.docs) {
-            var NYTlink = data.docs[story].web_url;
-            var NYTtitle = data.docs[story].headline.main;
-            var NYTblurb = data.docs[story].lead_paragraph;
+//        console.log(data.response.docs[0].web_url);
+        for (story in data.response.docs) {
+            var NYTlink = data.response.docs[story].web_url;
+            console.log(NYTlink);
+            var NYTtitle = data.response.docs[story].headline.main;
+            console.log(NYTtitle);
+            var NYTblurb = data.response.docs[story].snippet;
+            console.log(NYTblurb);
+            $nytElem.append("<li><a href=" + NYTlink + ">" + NYTtitle + "</a>" + "<p>" + NYTblurb + "</p></li>");
 
-            //$nytElem.append
-
-
-        }
+        };
 
     });
 
