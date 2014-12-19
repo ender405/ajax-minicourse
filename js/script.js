@@ -1,4 +1,5 @@
 
+// nyt key: 5a873fa1f7b482afecdc0bbdba12f7b2:3:31408746
 
 
 function loadData() {
@@ -26,6 +27,25 @@ function loadData() {
     $greeting.text("So, you want to live at " + $("#street").val() + " in " + $("#city").val());
     
     $body.append('<img class="bgimg" src=' + svRequestFragment + geoRequest + '>');
+
+    var nytKey = "&api-key=5a873fa1f7b482afecdc0bbdba12f7b2:3:31408746";
+    var nytAPIFragment = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q="
+
+    var nytURL = nytAPIFragment + city + nytKey;
+
+    $.getJSON(nytURL, function (data) {
+
+        console.log(data);
+        
+        for (story in data.docs) {
+            return;
+
+
+        }
+
+    });
+
+
 
     return false;
 };
