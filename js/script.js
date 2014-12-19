@@ -19,6 +19,7 @@ function loadData() {
     var address = $("#street").val().replace(/ /g,"+");
 //    console.log(address);
     var city = $("#city").val().replace(/ /g,"+").replace(/,/g,"");
+    var wikiCity = $("#city").val().replace(/ /g,"%20").replace(/,/g,"%20");
 //    console.log(city);
     var geoRequest = address + "," + city;
 //    console.log(geoRequest);
@@ -41,11 +42,11 @@ function loadData() {
 //        console.log(data.response.docs[0].web_url);
         for (story in data.response.docs) {
             var NYTlink = data.response.docs[story].web_url;
-            console.log(NYTlink);
+//            console.log(NYTlink);
             var NYTtitle = data.response.docs[story].headline.main;
-            console.log(NYTtitle);
+ //           console.log(NYTtitle);
             var NYTblurb = data.response.docs[story].snippet;
-            console.log(NYTblurb);
+ //           console.log(NYTblurb);
             $nytElem.append("<li><a href=" + NYTlink + ">" + NYTtitle + "</a>" + "<p>" + NYTblurb + "</p></li>");
 
         };
@@ -56,7 +57,20 @@ function loadData() {
         $nytElem.text("");
     });
 
+    var wikiAPIFragment = "http://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrsearch="
+    var wikiURL = wikiAPIFragment + wikiCity;
+    var dispWikiURL = "http://en.wikipedia.org/wiki/"
 
+    $.ajax({
+        url: wikiURL,
+        dataType: "jsonp",
+        success: function(data){
+            var results = data.query.pages;
+            $.each(results, function (key, value) {
+                $wikiElem.append("<li><a href=" + dispWikiURL + value.title.replace(" ","_") + ">" + value.title + "</a></li>" + "");
+            });
+        }
+    });
 
     return false;
 };
