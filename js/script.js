@@ -15,15 +15,15 @@ function loadData() {
 
     // load streetview
 
-    var address = $("#street").val();
-    console.log(address);
-    var city = $("#city").val();
-    console.log(city);
+    var address = $("#street").val().replace(/ /g,"+");
+//    console.log(address);
+    var city = $("#city").val().replace(/ /g,"+").replace(/,/g,"");
+//    console.log(city);
     var geoRequest = address + "," + city;
-    console.log(geoRequest);
-//    var imageSource = 
+//    console.log(geoRequest);
+    var svRequestFragment = "https://maps.googleapis.com/maps/api/streetview?size=670x670&location="
 
-    // YOUR CODE GOES HERE!
+    $body.append('<img class="bgimg" src=' + svRequestFragment + geoRequest + '>')
 
     return false;
 };
